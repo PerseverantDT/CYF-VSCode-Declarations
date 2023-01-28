@@ -14,61 +14,53 @@
 local bullet = {}
 
 --- Resets the collision system of the bullet to the encounter's default collision system.
-local function ResetCollisionSystem() end
-bullet.ResetCollisionSystem = ResetCollisionSystem
+bullet.ResetCollisionSystem = function() end
 
 --- Move this bullet `x` pixels to the right and `y` pixels up.
 ---
 --- @param x number
 --- @param y number
-local function Move(x, y) end
-bullet.Move = Move
+bullet.Move = function(x, y) end
 
 --- Move this bullet to this position immediately, relative to the arena's center.
 ---
 --- @param x number
 --- @param y number
-local function MoveTo(x, y) end
-bullet.MoveTo = MoveTo
+bullet.MoveTo = function(x, y) end
 
 --- Move this bullet to this position immediately, relative to the bottom-left corner of the screen.
 ---
 --- @param x number
 --- @param y number
-local function MoveToAbs(x, y) end
-bullet.MoveToAbs = MoveToAbs
+bullet.MoveToAbs = function(x, y) end
 
---- Destroys this bullet. You can continue retrieving its `x`, `y`, `absx` and `absy` properties. Trying to move a removed bullet will give you a Lua error. If you're not sure if your bullet still exists, check `isactive` first.
-local function Remove() end
-bullet.Remove = Remove
+--- Destroys this bullet. You can continue retrieving its `Bullet.x`, `Bullet.y`, `Bullet.absx`
+--- and `Bullet.absy` properties. Trying to move a removed bullet will give you a Lua error.
+--- If you're not sure if your bullet still exists, check `Bullet.isactive` first.
+bullet.Remove = function() end
 
---- Sets a variable on this bullet that you can retrieve with `GetVar`.
+--- Sets a variable on this bullet that you can retrieve with `Bullet.GetVar()`.
 ---
 --- @param your_variable_name string
 --- @param value any
-local function SetVar(your_variable_name, value) end
-bullet.SetVar = SetVar
+bullet.SetVar = function(your_variable_name, value) end
 
 --- Gets a variable that you previously set using `SetVar`.
 ---
 --- @param your_variable_name string
---- @return any
-local function GetVar(your_variable_name) end
-bullet.GetVar = GetVar
+--- @return any value
+bullet.GetVar = function(your_variable_name) end
 
 --- Moves this bullet on top of all currently existing projectiles.
 ---
 --- Note that newly spawned projectiles are always on top by default;
---- this function is mostly to move existing bullets to the top.
-local function SendToTop() end
-bullet.SendToTop = SendToTop
+--- this function is mostly to move existing bullets to the top
+bullet.SendToTop = function() end
 
 --- Moves this bullet below all currently existing projectiles.
-local function SendToBottom() end
-bullet.SendToBottom = SendToBottom
+bullet.SendToBottom = function() end
 
 --- Returns `true` if the player is colliding with the bullet. Will use PPCollision (pixel-perfect collisions) if the bullet has PP enabled.
 ---
---- @return boolean
-local function isColliding() end
-bullet.isColliding = isColliding
+--- @return boolean isColliding
+bullet.isColliding = function() end

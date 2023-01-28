@@ -34,5 +34,7 @@ function SetButtonLayer(layer) end
 --- @param scriptName string
 --- @param x number
 --- @param y number
---- @return Script
+--- @return Script enemyScript
+---
+--- @nodiscard Since this function creates an instance of Script, discarding the return value is most likely a mistake
 function CreateEnemy(scriptName, x, y) end

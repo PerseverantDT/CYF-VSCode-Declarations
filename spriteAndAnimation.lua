@@ -34,16 +34,14 @@ local sprite = {}
 --- Change a sprite's current image. It retains its scaling and rotation. If you have an animation running with `SetAnimation`, the animation will override your sprite change.
 ---
 --- @param newSprite string
-local function Set(newSprite) end
-sprite.Set = Set
+sprite.Set = function(newSprite) end
 
 --- Parents `sprite` to `otherSpriteObject`.
 ---
 --- This will make the original sprite move along with the object it's parented to.
 ---
 --- @param otherSpriteObject Sprite
-local function SetParent(otherSpriteObject) end
-sprite.SetParent = SetParent
+sprite.SetParent = function(otherSpriteObject) end
 
 --- Sets the masking mode of this sprite object. Does not function for Overworld Event sprites or Text Object letter sprites!
 ---
@@ -59,48 +57,41 @@ sprite.SetParent = SetParent
 --- of its children will only display when not inside the bounds of the sprite.  
 --- `invertedstencil`: Identical to `invertedsprite` except that the parent sprite is not shown.
 ---
---- @param mode "off"|"box"|"sprite"|"stencil"|"invertedsprite"|"invertedstencil"
-local function Mask(mode) end
-sprite.Mask = Mask
+--- @param mode "off"|"box"|"sprite"|"stencil"|"invertedsprite"|"invertedstencil
+sprite.Mask = function(mode) end
 
 --- Changes the point a sprite rotates and scales around.
 ---
 --- @param x number
 --- @param y number
-local function SetPivot(x, y) end
-sprite.SetPivot = SetPivot
+sprite.SetPivot = function(x, y) end
 
 --- Changes the point a sprite anchors to when moving.
 ---
 --- @param x number
 --- @param y number
-local function SetAnchor(x, y) end
-sprite.SetAnchor = SetAnchor
+sprite.SetAnchor = function(x, y) end
 
 --- Moves the sprite `x` pixels right, and `y` pixels up.
 ---
 --- @param x number
 --- @param y number
-local function Move(x, y) end
-sprite.Move = Move
+sprite.Move = function(x, y) end
 
 --- Same as setting `x` and `y` simultaneously.
-local function MoveTo(x, y) end
-sprite.MoveTo = MoveTo
+sprite.MoveTo = function(x, y) end
 
 --- Moves a sprite to an absolute screen position, regardless of its parent settings.
 ---
 --- @param x number
 --- @param y number
-local function MoveToAbs(x, y) end
-sprite.MoveToAbs = MoveToAbs
+sprite.MoveToAbs = function(x, y) end
 
 --- Same as setting xscale and yscale simultaneously.
 ---
 ---@param x number
 ---@param y number
-local function Scale(x, y) end
-sprite.Scale = Scale
+sprite.Scale = function(x, y) end
 
 --- Performs frame-by-frame animation with your own time between frames, in seconds.
 --- It's the same as changing the sprite object's image with `sprite.Set` on a set timer.
@@ -112,54 +103,45 @@ sprite.Scale = Scale
 ---
 --- @overload fun(spriteTable: string[])
 --- @overload fun(spriteTable: string[], timePerFrame: number)
-local function SetAnimation(spriteTable, timePerFrame, prefix) end
-sprite.SetAnimation = SetAnimation
+sprite.SetAnimation = function(spriteTable, timePerFrame, prefix) end
 
 --- Stops a frame-by-frame animation if it was running. Does NOT reset your sprite's
 --- image back to its previous one! Instead, use `Set()` just after this function.
-local function StopAnimation() end
-sprite.StopAnimation = StopAnimation
+sprite.StopAnimation = function() end
 
 --- Sends this sprite to the top of its layer's hierarchy. If a sprite has 5
 --- children, for instance, you can use this to rearrange them internally. However,
 --- child sprites will always appear on top of their parents, regardless of this function being called.
-local function SendToTop() end
-sprite.SendToTop = SendToTop
+sprite.SendToTop = function() end
 
 --- Sends this sprite to the bottom of its layer's hierarchy. Similar rules apply as with `SendToTop()`.
-local function SendToBottom() end
-sprite.SendToBottom  = SendToBottom
+sprite.SendToBottom  = function() end
 
 --- If both sprites have the same parent, this will move the calling sprite just below the other sprite.
 ---
 --- @param otherSpriteObject Sprite
-local function MoveBelow(otherSpriteObject) end
-sprite.MoveBelow = MoveBelow
+sprite.MoveBelow = function(otherSpriteObject) end
 
 --- If both sprites have the same parent, this will move the calling sprite just above the other sprite.
 ---
 --- @param otherSpriteObject Sprite
-local function MoveAbove(otherSpriteObject) end
-sprite.MoveAbove = MoveAbove
+sprite.MoveAbove = function(otherSpriteObject) end
 
 --- Removes a sprite object. Calling anything other than isactive after this will
---- give you an error. Removing a sprite object will also remove all children of the sprite object.
-local function Remove() end
-sprite.Remove = Remove
+--- give you an error. Removing a sprite object will also remove all children of the sprite object
+sprite.Remove = function() end
 
 --- Sets a variable in a sprite object that you can retrieve with `GetVar()`.
 ---
 --- @param yourVariableName string
 --- @param value any
-local function SetVar(yourVariableName, value) end
-sprite.SetVar = SetVar
+sprite.SetVar = function(yourVariableName, value) end
 
 --- Gets a variable in a sprite object that you previously set with `SetVar()`.
 ---
 --- @param yourVariableName string
 --- @return any value
-local function GetVar(yourVariableName) end
-sprite.GetVar = GetVar
+sprite.GetVar = function(yourVariableName) end
 
 --- Turns a sprite into dust, just like what happens in Undertale when an enemy is killed.
 ---
@@ -168,5 +150,4 @@ sprite.GetVar = GetVar
 ---
 --- @overload fun()
 --- @overload fun(playSound: boolean)
-local function Dust(playSound, removeObject) end
-sprite.Dust = Dust
+sprite.Dust = function(playSound, removeObject) end

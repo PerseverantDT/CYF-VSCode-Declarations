@@ -162,9 +162,24 @@ function BattleDialog(list_of_strings) end
 --- RESETTING: DEPRECATED, DO NOT USE. Only listed for completion purposes. It only exists in Unitale 0.2.1a, so trying to use it in CYF won't work. It was removed in the Github release of Unitale 0.2.1a, and seemed to be only for testing.
 --- PAUSE: As of CYF v0.6.2.1, calling State("PAUSE") will perfectly "pause" an encounter. The last active state will remain active, but in a frozen state, until you call State again. Only the Update function of the Encounter script will remain active here. To unfreeze a state, you must use State to switch to another state, preferably the last active state. GetCurrentState() will tell you the name of the frozen state.
 ---
---- @param state_to_go_to "ACTIONSELECT"|"ENEMYDIALOGUE"|"DEFENDING"|"ATTACKING"|"ENEMYSELECT"|"ACTMENU"|"ITEMMENU"|"MERCYMENU"|"DIALOGRESULT"|"DONE"|"NONE"|"RESETTING"|"PAUSE"
+--- @param state_to_go_to State
 function State(state_to_go_to) end
 
 --- Returns the name of the current state (see State() for all states).
---- @return "ACTIONSELECT"|"ENEMYDIALOGUE"|"DEFENDING"|"ATTACKING"|"ENEMYSELECT"|"ACTMENU"|"ITEMMENU"|"MERCYMENU"|"DIALOGRESULT"|"DONE"|"NONE"|"RESETTING"|"PAUSE" state
+--- @return State state
 function GetCurrentState() end
+
+--- @alias State
+--- | "ACTIONSELECT"
+--- | "ENEMYDIALOGUE"
+--- | "DEFENDING"
+--- | "ATTACKING"
+--- | "ENEMYSELECT"
+--- | "ACTMENU"
+--- | "ITEMMENU"
+--- | "MERCYMENU"
+--- | "DIALOGRESULT"
+--- | "DONE"
+--- | "NONE"
+--- | "RESETTING"
+--- | "PAUSE"

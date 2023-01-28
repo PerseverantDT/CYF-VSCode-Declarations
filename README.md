@@ -25,7 +25,12 @@ Simply copy the files into a folder and add the following configs to your worksp
         "{folder_where_the_files_are}/script.lua",
         "{folder_where_the_files_are}/audio.lua",
         "{folder_where_the_files_are}/spriteAndAnimation.lua",
-        "{folder_where_the_files_are}/projectile.lua"
+        "{folder_where_the_files_are}/projectile.lua",
+        "{folder_where_the_files_are}/input.lua",
+        "{folder_where_the_files_are}/text.lua",
+        "{folder_where_the_files_are}/time.lua",
+        "{folder_where_the_files_are}/misc.lua",
+        "{folder_where_the_files_are}/file.lua"
         ...
     ],
     "Lua.workspace.ignoreDir": [

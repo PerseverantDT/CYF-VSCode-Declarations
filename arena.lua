@@ -18,15 +18,13 @@ Arena = {}
 ---
 --- @param width number
 --- @param height number
-local function Resize(width, height) end
-Arena.Resize = Resize
+Arena.Resize = function(width, height) end
 
 --- Resizes the arena immediately, without the animation.
 ---
 --- @param width number
 --- @param height number
-local function ResizeImmediate(width, height) end
-Arena.ResizeImmediate = ResizeImmediate
+Arena.ResizeImmediate = function(width, height) end
 
 --- Moves the Arena based on its current position. Set `movePlayer` to `true` if you
 --- want the Player to move with the Arena and set `immediate` to `true` if you want
@@ -39,8 +37,7 @@ Arena.ResizeImmediate = ResizeImmediate
 ---
 --- @overload fun(x: number, y: number)
 --- @overload fun(x: number, y: number, movePlayer: boolean)
-local function Move(x, y, movePlayer, immediate) end
-Arena.Move = Move
+Arena.Move = function(x, y, movePlayer, immediate) end
 
 --- Moves the Arena based on the bottom-left corner of the window. Set `movePlayer`
 --- to `true` if you want the Player to move with the Arena and set `immediate`
@@ -53,8 +50,7 @@ Arena.Move = Move
 ---
 --- @overload fun(x: number, y: number)
 --- @overload fun(x: number, y: number, movePlayer: boolean)
-local function MoveTo(x, y, movePlayer, immediate) end
-Arena.MoveTo = MoveTo
+Arena.MoveTo = function(x, y, movePlayer, immediate) end
 
 --- Moves the Arena based on its current position and resizes it at the same
 --- time. Set `movePlayer` to `true` if you want the Player to move with the Arena
@@ -69,8 +65,7 @@ Arena.MoveTo = MoveTo
 ---
 --- @overload fun(x: number, y: number, width: number, height: number)
 --- @overload fun(x: number, y: number, width: number, height: number, movePlayer: boolean)
-local function MoveAndResize(x, y, width, height, movePlayer, immediate) end
-Arena.MoveAndResize = MoveAndResize
+Arena.MoveAndResize = function(x, y, width, height, movePlayer, immediate) end
 
 --- Moves the Arena based on the bottom-left corner of the window and resizes it at the same
 --- time. Set `movePlayer` to `true` if you want the Player to move with the Arena
@@ -85,13 +80,10 @@ Arena.MoveAndResize = MoveAndResize
 ---
 --- @overload fun(x: number, y: number, width: number, height: number)
 --- @overload fun(x: number, y: number, width: number, height: number, movePlayer: boolean)
-local function MoveToAndResize(x, y, width, height, movePlayer, immediate) end
-Arena.MoveToAndResize = MoveToAndResize
+Arena.MoveToAndResize = function(x, y, width, height, movePlayer, immediate) end
 
 --- Makes the Arena invisible, but it will stay active.
-local function Hide() end
-Arena.Hide = Hide
+Arena.Hide = function() end
 
 --- Makes the Arena visible after using Arena.Hide. This is also called automatically whenever a wave ends!
-local function Show() end
-Arena.Show = Show
+Arena.Show = function() end

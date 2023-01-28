@@ -38,15 +38,13 @@ Player = {}
 --- @overload fun(damage: number)
 --- @overload fun(damage: number, invul_time: number)
 --- @overload fun(damage: number, invul_time: number, ignoreDef: boolean)
-local function Hurt(damage, invul_time, ignoreDef, playSound) end
-Player.Hurt = Hurt
+Player.Hurt = function(damage, invul_time, ignoreDef, playSound) end
 
 --- Heals the player for this amount. This is exactly the same as `Player.Hurt(-value, 0)`.
 --- It also plays the healing sound.
 ---
 --- @param amount number
-local function Heal(amount) end
-Player.Heal = Heal
+Player.Heal = function(amount) end
 
 --- Either `true` or `false`. Only useable in waves. If `true`, this will prevent the
 --- player soul from doing its regular movement/keyboard control for the rest of
@@ -56,8 +54,7 @@ Player.Heal = Heal
 --- mode, like the blue or purple soul).
 ---
 --- @param boolean boolean
-local function SetControlOverride(boolean) end
-Player.SetControlOverride = SetControlOverride
+Player.SetControlOverride = function(boolean) end
 
 --- Moves the player soul based on its last position. If ignoreWalls is `false`, it will
 --- make sure the player doesn't go outside of the arena; otherwise, it ignores the
@@ -70,8 +67,7 @@ Player.SetControlOverride = SetControlOverride
 --- @param ignoreWalls boolean `false` by default
 ---
 --- @overload fun(x: number, y: number)
-local function Move(x, y, ignoreWalls) end
-Player.Move = Move
+Player.Move = function(x, y, ignoreWalls) end
 
 --- Moves the player soul to this position relative to the arena's center. If ignoreWalls is `false`, it will
 --- make sure the player doesn't go outside of the arena; otherwise, it ignores the
@@ -84,8 +80,7 @@ Player.Move = Move
 --- @param ignoreWalls boolean `false` by default
 ---
 --- @overload fun(x: number, y: number)
-local function MoveTo(x, y, ignoreWalls) end
-Player.MoveTo = MoveTo
+Player.MoveTo = function(x, y, ignoreWalls) end
 
 --- Moves the player soul to this position relative to the bottom left of the screen. If ignoreWalls is `false`, it will
 --- make sure the player doesn't go outside of the arena; otherwise, it ignores the
@@ -98,15 +93,13 @@ Player.MoveTo = MoveTo
 --- @param ignoreWalls boolean `false` by default
 ---
 --- @overload fun(x: number, y: number)
-local function MoveToAbs(x, y, ignoreWalls) end
-Player.MoveToAbs = MoveToAbs
+Player.MoveToAbs = function(x, y, ignoreWalls) end
 
 --- Lets you set the player's HP to a number above the player's Max HP. The REAL
 --- maximum is 1.5 times the player's Max HP.
 ---
 --- @param amount number
-local function ForceHP(amount) end
-Player.ForceHp = ForceHP
+Player.ForceHp = function(amount) end
 
 --- Lets you set the Player's MaxHP, relative to their normal MaxHP. If the total
 --- MaxHP is negative or nil, it causes a GameOver.
@@ -123,8 +116,7 @@ Player.ForceHp = ForceHP
 --- @overload fun(shift: number, invulnerabilitySeconds: number)
 --- @overload fun(shift: number, invulnerabilitySeconds: number, set: boolean)
 --- @overload fun(shift: number, invulnerabilitySeconds: number, set: boolean, canHeal: boolean)
-local function SetMaxHPShift(shift, invulnerabilitySeconds, set, canHeal, playSound) end
-Player.SetMaxHPShift = SetMaxHPShift
+Player.SetMaxHPShift = function(shift, invulnerabilitySeconds, set, canHeal, playSound) end
 
 --- Resets the player's Max HP, ATK and/or DEF to their original values based on the player's LV.
 ---
@@ -135,28 +127,25 @@ Player.SetMaxHPShift = SetMaxHPShift
 --- @overload fun()
 --- @overload fun(resetMHP: boolean)
 --- @overload fun(resetMHP: boolean, resetATK: boolean)
-local function ResetStats(resetMHP, resetATK, resetDEF) end
-Player.ResetStats = ResetStats
+Player.ResetStats = function(resetMHP, resetATK, resetDEF) end
 
 --- Sets the animation used when attacking an enemy. Use it like sprite.SetAnimation().
 ---
 --- @param anim string[]
 --- @param frequency number
 --- @param prefix string
-local function SetAttackAnim(anim, frequency, prefix) end
-Player.SetAttackAnim = SetAttackAnim
+Player.SetAttackAnim = function(anim, frequency, prefix) end
 
 --- Resets the animation of the player's attack to the default slashing animation.
 local function ResetAttackAnim() end
-Player.ResetAttackAnim = ResetAttackAnim
+Player.ResetAttackAnim = function() end
 
 --- Changes the target of the Player's attack while in `ATTACKING`. Does nothing
 --- outside of the state `ATTACKING`. It should be used in `BeforeDamageCalculation()`
 --- or `BeforeDamageValues()`.
 ---
 --- @param targetNumber integer
-local function ChangeTarget(targetNumber) end
-Player.ChangeTarget = ChangeTarget
+Player.ChangeTarget = function(targetNumber) end
 
 --- Forces an attack towards the enemy number `enemyID`. If you want to, you
 --- can choose the attack's damage, too - but otherwise, damage will be calculated normally.
@@ -167,8 +156,7 @@ Player.ChangeTarget = ChangeTarget
 --- @param damage number Can be omitted to use regular damage calculations
 ---
 --- @overload fun(enemyID: integer)
-local function ForceAttack(enemyID, damage) end
-Player.ForceAttack = ForceAttack
+Player.ForceAttack = function(enemyID, damage) end
 
 --- The next attack the player executes will attack the enemies contained in `targetIDs`
 --- and deal `damage` damage. If you want to, you can choose the attack's damage, too - but
@@ -184,14 +172,8 @@ Player.ForceAttack = ForceAttack
 ---
 --- @overload fun()
 --- @overload fun(targetIDs: integer[])
-local function MultiTarget(targetIDs, damage) end
-Player.MultiTarget = MultiTarget
-
---- The next attack the player executes will attack all enemies and deals `damage` damage.
----
---- @param damage number
-local function MultiTarget(damage) end
-Player.MultiTarget = MultiTarget
+--- @overload fun(damage: number)
+Player.MultiTarget = function(targetIDs, damage) end
 
 --- Forces an attack towards the enemies contained in `targetIDs` and deals `damage` damage.
 --- If you want to, you can choose the attack's damage, too - but otherwise, damage will
@@ -208,17 +190,8 @@ Player.MultiTarget = MultiTarget
 ---
 --- @overload fun()
 --- @overload fun(targetIDs: integer[])
-local function ForceMultiAttack(targetIDs, damage) end
-Player.ForceMultiAttack = ForceMultiAttack
-
---- Forces an attack that deals `damage` damage to all enemies.
----
---- If you want enemies to be able to die this way, you MUST check with `Player.CheckDeath`!
----
---- @param damage number
-local function ForceMultiAttack(damage) end
-Player.ForceMultiAttack = ForceMultiAttack
+--- @overload fun(damage: number)
+Player.ForceMultiAttack = function(targetIDs, damage) end
 
 --- Checks if the enemies are dead after a forced attack.
-local function CheckDeath() end
-Player.CheckDeath = CheckDeath
+Player.CheckDeath = function() end
