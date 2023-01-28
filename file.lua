@@ -2,7 +2,7 @@
 
 --- @class File
 --- @field openMode string (Readonly) Returns the file mode being used by this File object.
---- @field linecount integer (Readonly) The number of lines in the file.
+--- @field lineCount integer (Readonly) The number of lines in the file.
 --- @field filePath string (Readonly) The full file path to the opened file.
 local file = {}
 
