@@ -28,9 +28,9 @@ function CreateLayer(name, position, below) end
 --- @param childNumber number `-1` by default
 --- @return Sprite sprite
 ---
---- @overload fun(spriteName: string)
---- @overload fun(spriteName: string, layer: string)
---- @overload fun(spriteName: string, childNumber: number)
+--- @overload fun(spriteName: string): Sprite
+--- @overload fun(spriteName: string, layer: string): Sprite
+--- @overload fun(spriteName: string, childNumber: number): Sprite
 ---
 --- @nodiscard As this creates an instance of a sprite, ignoring its result is most likely a mistake.
 function CreateSprite(spriteName, layer, childNumber) end
