@@ -49,7 +49,7 @@ function GetGlobal(your_variable_name) end
 --- Can be used in the overworld.
 ---
 --- @param your_variable_name string
---- @param value any
+--- @param value string|number|boolean
 function SetRealGlobal(your_variable_name, value) end
 
 --- Gets a Global that you previously set using `SetRealGlobal()`.
@@ -57,7 +57,7 @@ function SetRealGlobal(your_variable_name, value) end
 --- Can be used in the overworld.
 ---
 --- @param your_variable_name string
---- @return any value
+--- @return string|number|boolean value
 function GetRealGlobal(your_variable_name) end
 
 --- AlMighty Globals are globals that are instantly saved into a file when set: these
@@ -74,7 +74,7 @@ function GetRealGlobal(your_variable_name) end
 --- Can be used in the overworld.
 ---
 --- @param your_variable_name string
---- @param value any
+--- @param value string|number|boolean
 function SetAlMightyGlobal(your_variable_name, value) end
 
 --- Gets an AlMighty Global that you previously set using `SetAlMightyGlobal()`.
@@ -82,7 +82,7 @@ function SetAlMightyGlobal(your_variable_name, value) end
 --- Can be used in the overworld.
 ---
 --- @param your_variable_name string
---- @return any value
+--- @return string|number|boolean value
 function GetAlMightyGlobal(your_variable_name) end
 
 --- Set to `true` if you want frame-based player movement (2px/frame) instead of time

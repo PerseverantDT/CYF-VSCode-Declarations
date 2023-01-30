@@ -41,3 +41,4 @@ luac.out
 
 # Environment Folders
 .vscode/
+.idea/
