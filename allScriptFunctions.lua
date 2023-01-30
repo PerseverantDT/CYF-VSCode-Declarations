@@ -95,7 +95,7 @@ function GetAlMightyGlobal(your_variable_name) end
 --- @param bool boolean
 function SetFrameBasedMovement(bool) end
 
---- Used alongside State("ENEMYSELECT") (or EnteringState when entering the same state) to
+--- Used alongside State("ENEMYSELECT") (or `EnteringState()` when entering the same state) to
 --- force the player to choose FIGHT or ACT. This controls whether you'll see the enemy's
 --- health bar in the menu and whether the next state upon pressing Z is ATTACKING or ACTMENU.
 ---
@@ -130,6 +130,8 @@ function SetPPCollision(bool) end
 --- As of CYF v0.6.4, if you end up with 4 or more lines of battle dialog displayed at once,
 --- the text will move up (9 pixels, one time) to compensate and try to fit your text inside the box.
 ---
+--- *You can use `\n` to create a new line with a star (\*), and `\r` to create a new line without a star.*
+---
 --- @param list_of_strings string[]
 function BattleDialogue(list_of_strings) end
 
@@ -140,6 +142,8 @@ function BattleDialogue(list_of_strings) end
 --- As of CYF v0.6.4, if you end up with 4 or more lines of battle dialog displayed at once,
 --- the text will move up (9 pixels, one time) to compensate and try to fit your text inside the box.
 ---
+--- *You can use `\n` to create a new line with a star (\*), and `\r` to create a new line without a star.*
+---
 --- @param list_of_strings string[]
 function BattleDialog(list_of_strings) end
 
@@ -148,38 +152,25 @@ function BattleDialog(list_of_strings) end
 --- what state you'll be going to and what that state entails. The states you pass to it are
 --- case-invariant, but uppercase is recommended for readability.
 ---
---- ACTIONSELECT: While in this state, you can select FIGHT/ACT/ITEM/MERCY.  
---- ENEMYDIALOGUE: When starting this state, currentdialogue gets read from the Encounter script for every monster and their dialogue is displayed. If that doesn't exist, it'll return something at random from the randomdialogue list.  
---- DEFENDING: When starting this state, nextwaves is read out from the Encounter script and all scripts in the Waves folder with matching names will be part of this defense step. wavetimer is also read from the Encounter script at this time.  
---- ATTACKING: Starting this state will put you in the screen where you either deal damage to an enemy by pressing "Z" at the right time, or you wait and miss entirely. The enemy this affects is the same as the last enemy selected in the states ENEMYSELECT or ACTMENU. After this state ends, the encounter moves on to the ENEMYDIALOGUE state by default.  
---- ENEMYSELECT: This state displays a list of all active enemies in the encounter. This state gets entered automatically after choosing FIGHT or ACT. If the Player got here from choosing FIGHT, the state loaded from pressing "Z" is ATTACKING, if they got here from choosing ACT, that state will be ACTMENU, but if they got here from calling State and press "Z", nothing will happen.  
---- ACTMENU: This state displays all of the options from the enemy's commands in order. If the enemy has cancheck set to true, then a "Check" option will be displayed here - which will follow the syntax seen in the description for commands as seen in Basic Setup. Having more than 6 ACT commands may cause glitchiness, though, so watch out! (Additional note: the enemy chosen will always be the same as the last enemy chosen in ENEMYSELECT.)  
---- ITEMMENU: This state shows all of the player's available items. It's tied with the HandleItem function (see Game events for more information).  
---- MERCYMENU: This state lets you choose from either "Spare" or "Flee". If at least one active enemy has canspare set to true, then "Spare" will be yellow - and selecting it will spare that enemy. Otherwise, if the option is not yellow, then choosing "Spare" will activate the encounter function HandleSpare. Also, choosing "Flee" prompts some silly messages :P
---- DIALOGRESULT: This is the state that is entered whenever BattleDialog is called, when the victory message displays, when the player fails to flee, or when an item is used. When all text is done and the player presses "Z", the state ENEMYDIALOGUE is entered next. The soul is forcibly invisible during this state.
---- DONE: Changing state to DONE will instantly end the current battle. Normally, this will force the player to the mod selection screen.
---- NONE: This state does nothing. It is entered for the first frame of the encounter, but entering it manually will completely freeze your encounter. It might be useful if you want to disable all of Unitale/CYF's basic functionality.
---- RESETTING: DEPRECATED, DO NOT USE. Only listed for completion purposes. It only exists in Unitale 0.2.1a, so trying to use it in CYF won't work. It was removed in the Github release of Unitale 0.2.1a, and seemed to be only for testing.
---- PAUSE: As of CYF v0.6.2.1, calling State("PAUSE") will perfectly "pause" an encounter. The last active state will remain active, but in a frozen state, until you call State again. Only the Update function of the Encounter script will remain active here. To unfreeze a state, you must use State to switch to another state, preferably the last active state. GetCurrentState() will tell you the name of the frozen state.
----
 --- @param state_to_go_to State
 function State(state_to_go_to) end
 
---- Returns the name of the current state (see State() for all states).
+--- Returns the name of the current state.
+---
 --- @return State state
 function GetCurrentState() end
 
 --- @alias State
---- | "ACTIONSELECT"
---- | "ENEMYDIALOGUE"
---- | "DEFENDING"
---- | "ATTACKING"
---- | "ENEMYSELECT"
---- | "ACTMENU"
---- | "ITEMMENU"
---- | "MERCYMENU"
---- | "DIALOGRESULT"
---- | "DONE"
---- | "NONE"
---- | "RESETTING"
---- | "PAUSE"
+--- | "ACTIONSELECT" # While in this state, you can select FIGHT/ACT/ITEM/MERCY.
+--- | "ENEMYDIALOGUE" # When starting this state, `currentdialogue` gets read from the Encounter script for every monster and their dialogue is displayed. If that doesn't exist, it'll return something at random from the randomdialogue list.
+--- | "DEFENDING" # When starting this state, nextwaves is read out from the Encounter script and all scripts in the Waves folder with matching names will be part of this defense step. wavetimer is also read from the Encounter script at this time.
+--- | "ATTACKING" # Starting this state will put you in the screen where you either deal damage to an enemy by pressing "Z" at the right time, or you wait and miss entirely. The enemy this affects is the same as the last enemy selected in the states ENEMYSELECT or ACTMENU. After this state ends, the encounter moves on to the ENEMYDIALOGUE state by default.
+--- | "ENEMYSELECT" # This state displays a list of all active enemies in the encounter. This state gets entered automatically after choosing FIGHT or ACT. If the Player got here from choosing FIGHT, the state loaded from pressing "Z" is ATTACKING, if they got here from choosing ACT, that state will be ACTMENU, but if they got here from calling State and press "Z", nothing will happen.
+--- | "ACTMENU" # This state displays all of the options from the enemy's commands in order. If the enemy has cancheck set to true, then a "Check" option will be displayed here - which will follow the syntax seen in the description for commands as seen in Basic Setup. Having more than 6 ACT commands may cause glitchiness, though, so watch out! (Additional note: the enemy chosen will always be the same as the last enemy chosen in ENEMYSELECT.)
+--- | "ITEMMENU" # This state shows all of the player's available items.
+--- | "MERCYMENU" # This state lets you choose from either "Spare" or "Flee". If at least one active enemy has canspare set to true, then "Spare" will be yellow - and selecting it will spare that enemy.
+--- | "DIALOGRESULT" # This is the state that is entered whenever BattleDialog is called, when the victory message displays, when the player fails to flee, or when an item is used. When all text is done and the player presses "Z", the state ENEMYDIALOGUE is entered next. The soul is forcibly invisible during this state.
+--- | "DONE" # Changing state to DONE will instantly end the current battle. Normally, this will force the player to the mod selection screen.
+--- | "NONE" # This state does nothing. It is entered for the first frame of the encounter, but entering it manually will completely freeze your encounter. It might be useful if you want to disable all of Unitale/CYF's basic functionality.
+--- | "RESETTING" # DEPRECATED, DO NOT USE. Only listed for completion purposes. It only exists in Unitale 0.2.1a, so trying to use it in CYF won't work. It was removed in the Github release of Unitale 0.2.1a, and seemed to be only for testing.
+--- | "PAUSE" # As of CYF v0.6.2.1, calling `State("PAUSE")` will perfectly "pause" an encounter. The last active state will remain active, but in a frozen state, until you call State again. Only the Update function of the Encounter script will remain active here. To unfreeze a state, you must use State to switch to another state, preferably the last active state. GetCurrentState() will tell you the name of the frozen state.

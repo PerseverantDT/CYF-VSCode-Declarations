@@ -16,7 +16,6 @@ script.SetVar = function(yourVariableName, value) end
 --- @return any BeforeDamageValues
 script.GetVar = function(yourVariableName) end
 
-local function Call(function_name, argument) end
 --- Runs `function_name` from within the target script. If a second argument is
 --- passed, it will be used as the argument for the function. For functions with
 --- multiple parameters, pass a table as the second argument.

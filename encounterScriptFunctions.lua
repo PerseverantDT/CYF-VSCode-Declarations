@@ -10,16 +10,9 @@ function RandomEncounterText() end
 --- Changes the layer of the FIGHT, ACT, ITEM and MERCY buttons and the Player's name, lv and hp.
 --- The usable layers are created sprite layers and these base layers:
 ---
---- Bottom: Under everything, even the background  
---- BelowUI: Above the background  
---- BelowArena: Above the background and the UI  
---- BelowPlayer: Above the background, the UI, and the Arena  
---- BelowBullet: Above the background, the UI, the Arena, and the Player  
---- Top: Above everything
----
 --- Enter `"default"` to reset the Buttons and UI.
 ---
---- @param layer string
+--- @param layer SpriteLayer
 function SetButtonLayer(layer) end
 
 --- This function creates an enemy script using the script `scriptName` in the `Lua/Monsters` folder
@@ -38,3 +31,12 @@ function SetButtonLayer(layer) end
 ---
 --- @nodiscard Since this function creates an instance of Script, discarding the return value is most likely a mistake
 function CreateEnemy(scriptName, x, y) end
+
+--- @alias SpriteLayer
+--- | "Bottom" # Under everything, even the background
+--- | "BelowUI" # Above the background
+--- | "BelowArena" # Above the background and the UI
+--- | "BelowPlayer" # Above the background, the UI, and the Arena
+--- | "BelowBullet" # Above the background, the UI, the Arena, and the Player
+--- | "Top" # Above everything
+--- | string # Names of sprite layers created by the modder

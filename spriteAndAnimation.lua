@@ -45,19 +45,7 @@ sprite.SetParent = function(otherSpriteObject) end
 
 --- Sets the masking mode of this sprite object. Does not function for Overworld Event sprites or Text Object letter sprites!
 ---
---- Available modes:
----
---- `off`: The default mode. Has no special properties.  
---- `box`: Any objects parented to this sprite are restricted to the bounding box of the sprite.
---- Recommended for masking bullets to the Arena and such things. Unfortunately doesn't seem
---- to work well with rotated sprites, but this is still the recommended mode for performance.  
---- `sprite`: Any objects parented to this sprite will be "cookie cuttered" to the current image of the sprite.  
---- `stencil`: Same as `sprite`, except that the parent sprite itself is not visible.  
---- `invertedsprite`: The reverse of `sprite`; while the sprite itself is visible, any
---- of its children will only display when not inside the bounds of the sprite.  
---- `invertedstencil`: Identical to `invertedsprite` except that the parent sprite is not shown.
----
---- @param mode "off"|"box"|"sprite"|"stencil"|"invertedsprite"|"invertedstencil
+--- @param mode MaskMode
 sprite.Mask = function(mode) end
 
 --- Changes the point a sprite rotates and scales around.
@@ -151,3 +139,11 @@ sprite.GetVar = function(yourVariableName) end
 --- @overload fun()
 --- @overload fun(playSound: boolean)
 sprite.Dust = function(playSound, removeObject) end
+
+--- @alias MaskMode
+--- | "off" # The default mode. Has no special properties.
+--- | "box" # Any objects parented to this sprite are restricted to the bounding box of the sprite. Recommended for masking bullets to the Arena and such things. Unfortunately doesn't seem to work well with rotated sprites, but this is still the recommended mode for performance.
+--- | "sprite" # Any objects parented to this sprite will be "cookie cuttered" to the current image of the sprite.
+--- | "stencil" # Same as sprite, except that the parent sprite itself is not visible.
+--- | "invertedsprite" # The reverse of sprite; while the sprite itself is visible, any of its children will only display when not inside the bounds of the sprite.
+--- | "invertedstencil" # Identical to invertedsprite except that the parent sprite is not shown.

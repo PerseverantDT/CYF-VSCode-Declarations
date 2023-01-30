@@ -1,7 +1,6 @@
 --- @meta
 
---- Sets the monster's sprite from the Sprites folder to `filename.png`. Can be
---- used with `[func]` to change sprites mid-dialogue.
+--- Sets the monster's sprite from the Sprites folder to `filename.png`.
 ---
 --- @param fileName string
 function SetSprite(fileName) end
