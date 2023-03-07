@@ -30,7 +30,8 @@ Simply copy the files into a folder and add the following configs to your worksp
         "{folder_where_the_files_are}/text.lua",
         "{folder_where_the_files_are}/time.lua",
         "{folder_where_the_files_are}/misc.lua",
-        "{folder_where_the_files_are}/file.lua"
+        "{folder_where_the_files_are}/file.lua",
+        "{folder_where_the_files_are}/newAudio.lua"
         ...
     ],
     "Lua.workspace.ignoreDir": [
@@ -38,6 +39,6 @@ Simply copy the files into a folder and add the following configs to your worksp
         "{folder_where_the_files_are}"
         ...
     ],
-    ... // omitted for brevity
+    ...
 }
 ```
