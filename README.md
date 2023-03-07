@@ -10,8 +10,8 @@ Simply copy the files into a folder and add the following configs to your worksp
 
 ```json
 {
-  ... // omitted for brevity
-  
+    ... // omitted for brevity
+    
     "Lua.workspace.library": [
         ...
         "{folder_where_the_files_are}/allScriptFunctions.lua",
