@@ -83,11 +83,10 @@ sprite.Scale = function(x, y) end
 
 --- Performs frame-by-frame animation with your own time between frames, in seconds.
 --- It's the same as changing the sprite object's image with `sprite.Set` on a set timer.
---- If `timePerFrame` is `1`, it takes 1 second to move to the next sprite.
 ---
 --- @param spriteTable string[]
---- @param timePerFrame number `1/30` by default
---- @param prefix string An optional string providing the path to a folder contained within your Sprites folder. This path will be automatically added to the beginning of every sprite's name. `""` by default
+--- @param timePerFrame number (Optional, defaults to `1/30`) The amount of time (in seconds) it takes for the animation to move to the next sprite
+--- @param prefix string (Optional, defaults to `""`) The path to a folder contained within your Sprites folder. This path will be automatically added to the beginning of every sprite's name.
 ---
 --- @overload fun(spriteTable: string[])
 --- @overload fun(spriteTable: string[], timePerFrame: number)
@@ -133,8 +132,8 @@ sprite.GetVar = function(yourVariableName) end
 
 --- Turns a sprite into dust, just like what happens in Undertale when an enemy is killed.
 ---
---- @param playSound boolean If `false`, deactivates the dust sound. `true` by default
---- @param removeObject boolean If `true`, removes the sprite. `false` by default
+--- @param playSound boolean (Optional, defaults to `true`) Whether the dusting sound should be played
+--- @param removeObject boolean (Optional, defaults to `false`) Whether the sprite object should be removed
 ---
 --- @overload fun()
 --- @overload fun(playSound: boolean)

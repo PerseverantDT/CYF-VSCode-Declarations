@@ -26,14 +26,10 @@ Player = {}
 --- Deals damage to the player, and makes them invincible for `invul_time`
 --- seconds. Cannot hurt the player again if they are already hurting (flashing).
 ---
---- Set `ignoreDef` to `true`, and if the encounter variable `allowPlayerDef` is `true`, the damage dealt here will ignore the player's defense.
----
---- Set `playSound` to `false`, and no sound will be played whatsoever.
----
 --- @param damage number
---- @param invul_time number `1.7` by default
---- @param ignoreDef boolean `false` by default
---- @param playSound boolean `true` by default
+--- @param invul_time number (Optional, defaults to `1.7`) The amount of invulnerability time the player gets when damaged
+--- @param ignoreDef boolean (Optional, defaults to `false`) If `true` and the encounter variable `allowPlayerDef` is true, damage dealt here will ignore the player's defense
+--- @param playSound boolean (Optional, defaults to `true`) Whether a sound will be played upon taking damage
 ---
 --- @overload fun(damage: number)
 --- @overload fun(damage: number, invul_time: number)
@@ -64,7 +60,7 @@ Player.SetControlOverride = function(boolean) end
 ---
 --- @param x number
 --- @param y number
---- @param ignoreWalls boolean `false` by default
+--- @param ignoreWalls boolean (Optional, defaults to `false`)
 ---
 --- @overload fun(x: number, y: number)
 Player.Move = function(x, y, ignoreWalls) end
@@ -77,7 +73,7 @@ Player.Move = function(x, y, ignoreWalls) end
 ---
 --- @param x number
 --- @param y number
---- @param ignoreWalls boolean `false` by default
+--- @param ignoreWalls boolean (Optional, defaults to `false`)
 ---
 --- @overload fun(x: number, y: number)
 Player.MoveTo = function(x, y, ignoreWalls) end
@@ -90,7 +86,7 @@ Player.MoveTo = function(x, y, ignoreWalls) end
 ---
 --- @param x number
 --- @param y number
---- @param ignoreWalls boolean `false` by default
+--- @param ignoreWalls boolean (Optional, defaults to `false`)
 ---
 --- @overload fun(x: number, y: number)
 Player.MoveToAbs = function(x, y, ignoreWalls) end
@@ -107,10 +103,10 @@ Player.ForceHp = function(amount) end
 --- Formula: Player's MaxHP = Base MaxHP + MaxHP Shift
 ---
 --- @param shift number The value that will be added to the Max HP. If `set` is `true`, this will be the player's new Max HP.
---- @param invulnerabilitySeconds number The time for which the player will be invulnerable after this operation. `1.7` by default
---- @param set boolean `true` if you want to set the Player's MaxHP directly. `false` by default
---- @param canHeal boolean `true` if the player will automatically gain any health added by this function as normal (yellow) health. Does not apply for losing health. `false` by default
---- @param playSound boolean `true` if you want to play the heal/hurt sound when the operation is done. `true` by default
+--- @param invulnerabilitySeconds number (Optional, defaults to `1.7`) The time for which the player will be invulnerable after this operation.
+--- @param set boolean (Optional, defaults to `false`) `true` if you want to set the Player's MaxHP directly.
+--- @param canHeal boolean (Optional, defaults to `false`) `true` if the player will automatically gain any health added by this function as normal (yellow) health. Does not apply for losing health.
+--- @param playSound boolean (Optional, defaults to `true`) `true` if you want to play the heal/hurt sound when the operation is done.
 ---
 --- @overload fun(shift: number)
 --- @overload fun(shift: number, invulnerabilitySeconds: number)
@@ -120,9 +116,9 @@ Player.SetMaxHPShift = function(shift, invulnerabilitySeconds, set, canHeal, pla
 
 --- Resets the player's Max HP, ATK and/or DEF to their original values based on the player's LV.
 ---
---- @param resetMHP boolean If `true`, the player's Max HP will be set back to what it should be based on the player's LV. `true` by default
---- @param resetATK boolean If `true`, the player's ATK will be set back to what it should be based on the player's LV. `true` by default
---- @param resetDEF boolean If `true`, the player's DEF will be set back to what it should be based on the player's LV. `false` by default
+--- @param resetMHP boolean (Optional, defaults to `true`) If `true`, the player's Max HP will be set back to what it should be based on the player's LV.
+--- @param resetATK boolean (Optional, defaults to `true`) If `true`, the player's ATK will be set back to what it should be based on the player's LV.
+--- @param resetDEF boolean (Optional, defaults to `false`) If `true`, the player's DEF will be set back to what it should be based on the player's LV.
 ---
 --- @overload fun()
 --- @overload fun(resetMHP: boolean)
@@ -137,7 +133,6 @@ Player.ResetStats = function(resetMHP, resetATK, resetDEF) end
 Player.SetAttackAnim = function(anim, frequency, prefix) end
 
 --- Resets the animation of the player's attack to the default slashing animation.
-local function ResetAttackAnim() end
 Player.ResetAttackAnim = function() end
 
 --- Changes the target of the Player's attack while in `ATTACKING`. Does nothing
@@ -153,7 +148,7 @@ Player.ChangeTarget = function(targetNumber) end
 --- If you want enemies to be able to die this way, you MUST check with `Player.CheckDeath()`!
 ---
 --- @param enemyID integer
---- @param damage number Can be omitted to use regular damage calculations
+--- @param damage number (Optional) Can be omitted to use regular damage calculations
 ---
 --- @overload fun(enemyID: integer)
 Player.ForceAttack = function(enemyID, damage) end
@@ -167,8 +162,8 @@ Player.ForceAttack = function(enemyID, damage) end
 --- damage value, or all targets can share the same damage value if the damage value is a
 --- simple number.
 ---
---- @param targetIDs integer[] Can be omitted to target all enemies
---- @param damage number|number[] Can be omitted to use regular damage calculation
+--- @param targetIDs integer[] (Optional) Can be omitted to target all enemies
+--- @param damage number|number[] (Optional) Can be omitted to use regular damage calculation
 ---
 --- @overload fun()
 --- @overload fun(targetIDs: integer[])
@@ -185,8 +180,8 @@ Player.MultiTarget = function(targetIDs, damage) end
 ---
 --- If you want enemies to be able to die this way, you MUST check with `Player.CheckDeath()`!
 ---
---- @param targetIDs integer[] Can be omitted to target all
---- @param damage number|number[] Can be omitted to use regular damage calculation
+--- @param targetIDs integer[] (Optional) Can be omitted to target all
+--- @param damage number|number[] (Optional) Can be omitted to use regular damage calculation
 ---
 --- @overload fun()
 --- @overload fun(targetIDs: integer[])

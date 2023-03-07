@@ -35,10 +35,10 @@ Audio.Pitch = function(value) end
 --- @param filename string
 Audio.LoadFile = function(filename) end
 
---- Play the sound from the Sounds folder titled `filename.ogg` or `filename.wav`. Don't include the file extension.
+--- Play the sound from the Sounds folder titled `<filename>.ogg` or `<filename>.wav`. Don't include the file extension.
 ---
 --- @param filename string
---- @param volume number `0.65` by default
+--- @param volume number (Optional, defaults to `0.65`)
 ---
 --- @overload fun(filename: string)
 Audio.PlaySound = function(filename, volume) end
@@ -53,7 +53,7 @@ Audio.PauseAll = function() end
 Audio.UnpauseAll = function() end
 
 --- Adds a sound to the sound dictionary. Doing so allows you to change
---- the name of the sounds played by the engine - like, for example, hurtsound or menumove.
+--- the name of the sounds played by the engine (e.g.: `hurtsound` or `menumove`).
 ---
 --- @param key string
 --- @param value string

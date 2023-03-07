@@ -10,5 +10,11 @@ Input = {}
 --- Get the state of the given key.
 ---
 --- @param keyName string
---- @return integer state `0` when not pressed, `1` on the first frame the key is pressed, `2` while it's being held, and `-1` on the first frame it's released.
+--- @return keyPressState state
 Input.GetKey = function(keyName) end
+
+--- @alias keyPressState
+--- | -1 # Just Released
+--- | 0 # Not Pressed
+--- | 1 # Just Pressed
+--- | 2 # Is Held

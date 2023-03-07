@@ -27,8 +27,8 @@ Misc = {}
 --- away from the normal position.
 ---
 --- @param durationInFrames integer
---- @param intensity number `3` by default
---- @param isIntensityDecreasing boolean `false` by default
+--- @param intensity number (Optional, defaults to `3`)
+--- @param isIntensityDecreasing boolean (Optional, defaults to `false`)
 ---
 --- @overload fun(durationInFrames: integer)
 --- @overload fun(durationInFrames: integer, intensity: number)
@@ -108,10 +108,10 @@ Misc.FileExists = function(path) end
 --- This function returns a list of either files or folders in your Mod folder ONLY. Using `../` to go up a folder is NOT allowed.
 ---
 --- @param path string Path to the file to open, relative to your Mod folder. Can enter subfolders such as `Lua`.
---- @param getFolders boolean If `true`, this function will return the names of all Folders in path. Otherwise, this function will return the names of all Files in path. `false` by default
+--- @param getFolders boolean (Optional, defaults to `false`) If `true`, this function will return the names of all Folders in path. Otherwise, this function will return the names of all Files in path.
 --- @return string[] childrenFilesOrFolders
 ---
---- @overload fun(path: string)
+--- @overload fun(path: string): childrenFilesOrFolders: string[]
 Misc.ListDir = function(path, getFolders) end
 
 --- Use this function to check if a folder in your Mod folder ONLY exists. Using `../` to go up a folder is NOT allowed.
@@ -136,10 +136,10 @@ Misc.MoveDir = function(path, newPath) end
 --- Attempts to delete a folder with the path `path` relative to your mod folder. Using `../` to go up a folder is NOT allowed.
 ---
 --- @param path string
---- @param force boolean If `true`, this function will forcefully remove a folder. Otherwise, a folder will only be removed if it is empty. `false` by default
+--- @param force boolean (Optional, defaults to `false`) If `true`, this function will forcefully remove a folder. Otherwise, a folder will only be removed if it is empty.
 --- @return boolean successful `true` if the operation was successful. `false` otherwise.
 ---
---- @overload fun(path: string)
+--- @overload fun(path: string): successful: boolean
 Misc.RemoveDir = function(path, force) end
 
 --- This function opens a file in your Mod folder ONLY, for reading and writing. Using `../` to go up a folder is NOT allowed.
@@ -148,6 +148,6 @@ Misc.RemoveDir = function(path, force) end
 --- @param mode "rw" Determines how the file should be opened: `r`: The file can only be read from; `w` The file can only be written to; `rw` The file can be read from AND written to.
 --- @return ReadableWritableFile file
 ---
---- @overload fun(path: string, mode: 'r'): ReadableFile
---- @overload fun(path: string, mode: 'w'): WritableFile
+--- @overload fun(path: string, mode: 'r'): file: ReadableFile
+--- @overload fun(path: string, mode: 'w'): file: WritableFile
 Misc.OpenFile = function(path, mode) end

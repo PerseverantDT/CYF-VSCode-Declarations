@@ -196,15 +196,15 @@ text.SetFont = function(fontName) end
 --- Sets the effect of the text. Same as the text command `[effect]`.
 ---
 --- @param effect TextEffect
---- @param intensity number `-1` by default
+--- @param intensity number (Optional, defaults to `-1`)
 ---
 --- @overload fun(effect: TextEffect)
 text.SetEffect = function(effect, intensity) end
 
 --- Adds a bubble to the text. You can also set the side and the position of the tail (a.k.a. speech thing) if you want to.
 ---
---- @param side string|nil `nil` by default
---- @param position number|string|nil `nil` by default
+--- @param side string|nil (Optional, defaults to `nil`)
+--- @param position number|string|nil (Optional, defaults to `nil`)
 ---
 --- @overload fun()
 --- @overload fun(side: string|nil)
@@ -213,7 +213,7 @@ text.ShowBubble = function(side, position) end
 --- Shortcut to `Text.SetSpeechThingPositionAndSide`.
 ---
 --- @param side BubbleSide
---- @param position number|string `"50%"` by default
+--- @param position number|string (Optional, defaults to `"50%"`)
 ---
 --- @overload fun(side: string)
 text.SetTail = function(side, position) end
@@ -221,7 +221,7 @@ text.SetTail = function(side, position) end
 --- Sets the size and position of the dialogue bubble's tail (a.k.a speech thing).
 ---
 --- @param side BubbleSide
---- @param position number|string `"50%"` by default
+--- @param position number|string (Optional, defaults to `"50%"`)
 text.SetSpeechThingPositionAndSide = function(side, position) end
 
 --- Hides the bubble
@@ -260,8 +260,8 @@ text.GetTextHeight = function() end
 --- @param text string|string[] The text to display.
 --- @param position number[] Two numbers: The x and y positions of the center of the object.
 --- @param textMaxWidth number
---- @param layer string The sprite layer of the Text Object. `"BelowPlayer"` by default
---- @param bubbleHeight number `-1` by default, which will autocompute the height of the bubble
+--- @param layer string (Optional, defaults to `"BelowPlayer"`) The sprite layer of the Text Object.
+--- @param bubbleHeight number (Optional, defaults to `-1`) If set to `-1`, autocomputes the height of the bubble.
 --- @return Text text
 ---
 --- @nodiscard Since this function creates an instance of Text, discarding the return value is most likely a mistake

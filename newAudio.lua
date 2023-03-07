@@ -32,8 +32,10 @@ function NewAudio.Exists(name) end
 --- Gets the name and type of the audio clip currently playing in the specified channel
 ---
 --- @param name string The name of the audio channel
---- @param withPrefix? boolean (Optional, defaults to true) If `true`, the return value of this function will begin with `"music:"` for music clips, `"sound:"` for sound clips, and `"voice:"` for voice clips.
+--- @param withPrefix boolean (Optional, defaults to true) If `true`, the return value of this function will begin with `"music:"` for music clips, `"sound:"` for sound clips, and `"voice:"` for voice clips.
 --- @return string audioName If no audio is playing, `"empty"` will be returned.
+---
+--- @overload fun(name: string): audioName: string
 function NewAudio.GetAudioName(name, withPrefix) end
 
 --- Gets the length of time in seconds that the specified channel's most recently played audio lasts for.
@@ -60,6 +62,9 @@ function NewAudio.GetCurrentTime(name) end
 --- @param music string The name of the music file to play. These are loaded from your mod's `Audio` folder, as `.ogg` or `.wav` files. Don't include the file extension.
 --- @param loop? boolean (Optional, defaults to `false`) Whether the engine should loop the music or not
 --- @param volume? number (Optional, defaults to `1`) The volume of the music
+---
+--- @overload fun(name: string, music: string)
+--- @overload fun(name: string, music: string, loop: boolean)
 function NewAudio.PlayMusic(name, music, loop, volume) end
 
 --- Plays the provided sound clip on the specified channel.
@@ -68,6 +73,9 @@ function NewAudio.PlayMusic(name, music, loop, volume) end
 --- @param sound string The name of the sound clip to play. These are loaded from your mod's `Sounds` folder, as `.ogg` or `.wav` files. Don't include the file extension.
 --- @param loop? boolean (Optional, defaults to `false`) Whether the engine should loop the sound clip or not
 --- @param volume number (Optional, defaults to `0.65`) The volume of the sound clip
+---
+--- @overload fun(name: string, sound: string)
+--- @overload fun(name: string, sound: string, loop: boolean)
 function NewAudio.PlaySound(name, sound, loop, volume) end
 
 --- Plays the provided voice bit on the specified channel.
@@ -76,6 +84,9 @@ function NewAudio.PlaySound(name, sound, loop, volume) end
 --- @param voice string The name of the voice bit to play. These are loaded from your mod's `Sounds/Voices` folder, as `.ogg` or `.wav` files. Don't include the file extension.
 --- @param loop? boolean (Optional, defaults to `false`) Whether the engine should loop the voice bit or not
 --- @param volume? number (Optional, defaults to `0.65`) The volume of the voice bit
+---
+--- @overload fun(name: string, voice: string)
+--- @overload fun(name: string, voice: string, loop: boolean)
 function NewAudio.PlayVoice(name, voice, loop, volume) end
 
 --- Sets the pitch (and speed) of the specified channel

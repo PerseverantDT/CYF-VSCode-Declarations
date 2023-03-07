@@ -32,8 +32,8 @@ Arena.ResizeImmediate = function(width, height) end
 ---
 --- @param x number
 --- @param y number
---- @param movePlayer boolean `true` by default
---- @param immediate boolean `false` by default
+--- @param movePlayer boolean (Optional, defaults to `true`) Should the player move with the arena?
+--- @param immediate boolean (Optional, defaults to `false) Should the arena move immediately instead of tweened?
 ---
 --- @overload fun(x: number, y: number)
 --- @overload fun(x: number, y: number, movePlayer: boolean)
@@ -45,8 +45,8 @@ Arena.Move = function(x, y, movePlayer, immediate) end
 ---
 --- @param x number
 --- @param y number
---- @param movePlayer boolean `true` by default
---- @param immediate boolean `false` by default
+--- @param movePlayer boolean (Optional, defaults to `true`) Should the player move with the arena?
+--- @param immediate boolean (Optional, defaults to `false) Should the arena move immediately instead of tweened?
 ---
 --- @overload fun(x: number, y: number)
 --- @overload fun(x: number, y: number, movePlayer: boolean)
@@ -60,8 +60,8 @@ Arena.MoveTo = function(x, y, movePlayer, immediate) end
 --- @param y number
 --- @param width number
 --- @param height number
---- @param movePlayer boolean `true` by default
---- @param immediate boolean `false` by default
+--- @param movePlayer boolean (Optional, defaults to `true`) Should the player move with the arena?
+--- @param immediate boolean (Optional, defaults to `false) Should the arena move immediately instead of tweened?
 ---
 --- @overload fun(x: number, y: number, width: number, height: number)
 --- @overload fun(x: number, y: number, width: number, height: number, movePlayer: boolean)
@@ -75,8 +75,8 @@ Arena.MoveAndResize = function(x, y, width, height, movePlayer, immediate) end
 --- @param y number
 --- @param width number
 --- @param height number
---- @param movePlayer boolean `true` by default
---- @param immediate boolean `false` by default
+--- @param movePlayer boolean (Optional, defaults to `true`) Should the player move with the arena?
+--- @param immediate boolean (Optional, defaults to `false) Should the arena move immediately instead of tweened?
 ---
 --- @overload fun(x: number, y: number, width: number, height: number)
 --- @overload fun(x: number, y: number, width: number, height: number, movePlayer: boolean)

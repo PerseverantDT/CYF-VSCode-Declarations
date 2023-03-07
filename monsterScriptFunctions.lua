@@ -45,7 +45,6 @@ function Move(x, y) end
 --- and `y` is 231px down.
 function MoveTo(x, y) end
 
---- @overload fun(bind: boolean)
 --- Controls whether the enemy's sprite will follow the Arena's movements.
 ---
 --- If bind is `true`, the enemy will be parented to the Arena and follow all of its
@@ -53,7 +52,9 @@ function MoveTo(x, y) end
 --- on the value of `isUnderArena`.
 ---
 --- @param bind boolean
---- @param isUnderArena boolean `false` by default
+--- @param isUnderArena boolean (Optional, defaults to `false`)
+---
+--- @overload fun(bind: boolean)
 function BindToArena(bind, isUnderArena) end
 
 --- Makes the enemy's dialogue bubble appear `x` pixels horizontally and `y` pixels

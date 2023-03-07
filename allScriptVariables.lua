@@ -15,7 +15,7 @@ safe = nil
 --- @type boolean
 windows = nil
 
---- Returns a different string based on the version of CYF you are using.
+--- Returns a string based on the version of CYF you are using.
 ---
 --- Versions before v0.6: Previous version's number (e.g.: `"0.5.4"` in CYF v0.5.5)  
 --- Versions between v0.6 and v0.6.1.2: Always `"1.0"`  
